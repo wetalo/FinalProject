@@ -412,6 +412,7 @@
     <Compile Include="Assets\Scripts\Menu\ControllersTouching.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuSpawner.cs" />
     <Compile Include="Assets\Scripts\TouchHandler.cs" />
+    <Compile Include="Assets\Scripts\UI\ZTargetImage.cs" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Version1.5\Avatar_PC_SingleComponent.shader" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\Version1.5\Avatar_Mobile_Loader.shader" />
     <None Include="Assets\Oculus\Avatar\Resources\Materials\AvatarSurfaceShaderSelfOccluding.shader" />

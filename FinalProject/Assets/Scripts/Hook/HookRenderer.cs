@@ -17,6 +17,11 @@ public class HookRenderer : MonoBehaviour {
     bool isBeingProjected = false;
     GrapplePointHitbox currentGrapplePoint;
 
+    public bool leftTouch;
+
+    bool isZTargeting;
+    public ZTargetImage zTargetImage;
+
 	// Use this for initialization
 	void Start () {
         targetPrefabInstance = GameObject.Instantiate(targetPrefab);
@@ -26,6 +31,39 @@ public class HookRenderer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         CastOutToTarget();
+        if (isBeingProjected)
+        {
+            if (leftTouch)
+            {
+                if (TouchHandler.TH.leftTouchPrimaryHandTriggerPulled)
+                {
+                    zTargetImage.enabled = true;
+                    zTargetImage.SetTarget(currentGrapplePoint.transform);
+                    isZTargeting = true;
+                } else
+                {
+                    zTargetImage.SetTarget(null);
+                    zTargetImage.enabled = false;
+                    //isBeingProjected = false;
+                    isZTargeting = false;
+                }
+            } else
+            {
+                if (TouchHandler.TH.rightTouchPrimaryHandTriggerPulled)
+                {
+                    zTargetImage.enabled = true;
+                    zTargetImage.SetTarget(currentGrapplePoint.transform);
+                    isZTargeting = true;
+                }
+                else
+                {
+                    zTargetImage.SetTarget(null);
+                    zTargetImage.enabled = false;
+                    //isBeingProjected = false;
+                    isZTargeting = false;
+                }
+            }
+        }
 
     }
 
