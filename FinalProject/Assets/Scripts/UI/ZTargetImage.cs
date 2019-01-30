@@ -12,6 +12,7 @@ public class ZTargetImage : MonoBehaviour {
     public float scalingTime = 0.4f;
     float scalingTimer;
     bool scalingUp;
+    
 
     Vector3 defaultScale;
     Vector3 largerScale;
@@ -28,7 +29,8 @@ public class ZTargetImage : MonoBehaviour {
 	void Update () {
         if (target)
         {
-            Vector3 position = uiCam.WorldToScreenPoint(target.position);
+            //Vector3 position = uiCam.WorldToScreenPoint(target.position);
+            Vector3 position = target.position;
             transform.position = position;
 
             scalingTimer += Time.deltaTime;
@@ -45,6 +47,11 @@ public class ZTargetImage : MonoBehaviour {
             {
                 transform.localScale = largerScale - ((largerScale - defaultScale) * (scalingTimer / scalingTime));
             }
+
+            //transform.LookAt(uiCam.transform);
+            Vector3 angles = transform.rotation.eulerAngles;
+            angles.x = 90;
+            transform.rotation = Quaternion.Euler(angles);
         }
 	}
 
